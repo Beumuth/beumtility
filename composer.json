@@ -1,0 +1,16 @@
+{
+	"name": "beumuth/beumtility",
+	"description": "Utility library for PHP",
+	"type": "library",
+	"keywords": [],
+	"autoload": {
+		"psr-4": {
+			"Beumuth\\Beumtil\\": "src/"
+		}
+	},
+	"require": {
+	},
+	"require-dev": {
+		"phpunit/phpunit": "7.4"
+	}
+}
