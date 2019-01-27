@@ -6,14 +6,14 @@ class Optional {
 	
 	private $object;
 	
-	function __construct($object) {
+	function __construct(object $object) : self {
 		$this->object = $object;
 	}
 	
 	/**
 	 * @return Optional An Optional with a null underlying $object
 	 */
-	public static function hollow() {
+	public static function hollow(): Optional {
 		return new Optional(null);
 	}
 	
@@ -22,7 +22,7 @@ class Optional {
 	 * an InvalidArgumentException.
 	 * @throws \InvalidArgumentException if $object is null
 	 */
-	public static function of($object) {
+	public static function of(object $object): Optional {
 		if(is_null($object)) {
 			throw new \InvalidArgumentException("Given object cannot be null");
 		}
@@ -33,7 +33,7 @@ class Optional {
 	 * Returns an optional with the given $object. If $object is null,
 	 * returns an empty optional.
 	 */
-	public static function ofNullable($object) {
+	public static function ofNullable(object $object): Optional {
 		return new Optional($object);
 	}
 	
@@ -41,7 +41,7 @@ class Optional {
 	 * Get the underlying $object, otherwise throw EmptyOptionalException
 	 * @throws EmptyOptionalException if this Optional is empty
 	 */
-	public function get() {
+	public function get(): object {
 		if($this->isHollow()){
 			throw new EmptyOptionalException();
 		}
@@ -50,18 +50,18 @@ class Optional {
 	
 	/**
 	 * Determines if the underlying $object is null
-	 * @return boolean
+	 * @return bool
 	 */
-	public function isHollow() {
+	public function isHollow(): bool {
 		return is_null($this->object);
 	}
 	
 	/**
-	 * @param type $other The variable to return if this Optional is hollow.
+	 * @param object $other The variable to return if this Optional is hollow.
 	 * @return mixed The underlying $object if not null, otherwise the given
 	 *				 $other
 	 */
-	public function orElse($other) {
+	public function orElse(object $other): object {
 		if(is_null($this->object)) {
 			return $other;
 		}
