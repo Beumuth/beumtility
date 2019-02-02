@@ -6,7 +6,7 @@ class Optional {
 	
 	private $object;
 	
-	function __construct(object $object) : self {
+	function __construct(object $object) {
 		$this->object = $object;
 	}
 	
